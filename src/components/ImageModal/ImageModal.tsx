@@ -1,43 +1,49 @@
-import Modal from 'react-modal';
-import { useEffect } from 'react';
+// import Modal from "react-modal";
+// import { useEffect } from "react";
 
-import css from "./ImageModal.module.css"
+// import css from "./ImageModal.module.css";
 
-Modal.setAppElement('#root');
+// Modal.setAppElement("#root");
 
-export default function ImageModal({ isOpen, onRequestClose, imageUrl }) {
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (e.key === 'Escape') {
-                onRequestClose();
-            }
-        };
+// type ImageModalProps = {
+//   isOpen: boolean;
+//   onRequestClose: () => void;
+//   imageUrl: string | null;
+// };
 
-        window.addEventListener('keydown', handleKeyDown);
+// export default function ImageModal({
+//   isOpen,
+//   onRequestClose,
+//   imageUrl,
+// }: ImageModalProps) {
+//   useEffect(() => {
+//     const handleKeyDown = (e: KeyboardEvent): void => {
+//       if (e.key === "Escape") {
+//         onRequestClose();
+//       }
+//     };
 
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [onRequestClose]);
+//     window.addEventListener("keydown", handleKeyDown);
 
-    const handleOverlayClick = (e) => {
-        if (e.target === e.currentTarget) {
-            onRequestClose();
-        }
-    };
+//     return () => {
+//       window.removeEventListener("keydown", handleKeyDown);
+//     };
+//   }, [onRequestClose]);
 
-    if (!imageUrl) return null;
+//   if (!imageUrl) return null;
 
-    return (
-        <Modal
-            isOpen={isOpen}
-            onRequestClose={onRequestClose}
-            className={css.modalContent}
-            overlayClassName={css.modalOverlay}
-            onClick={handleOverlayClick} 
-        >
-            <button className={css.closeButton} onClick={onRequestClose}>✖</button>
-            <img src={imageUrl} alt="Large" className={css.modalImage} />
-        </Modal>
-    );
-}
+//   return (
+//     <Modal
+//       isOpen={isOpen}
+//       onRequestClose={onRequestClose}
+//       className={css.modalContent}
+//       overlayClassName={css.modalOverlay}
+//       shouldCloseOnOverlayClick={true}
+//     >
+//       <button className={css.closeButton} onClick={onRequestClose}>
+//         ✖
+//       </button>
+//       <img src={imageUrl} alt="Large" className={css.modalImage} />
+//     </Modal>
+//   );
+// }

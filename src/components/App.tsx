@@ -2,21 +2,24 @@ import { useState, useEffect } from "react";
 import { fetchUser } from "../api";
 
 import SearchBar from "./SearchBar/SearchBar";
-import ImageGallery from "./ImageGallery/ImageGallery";
-import ErrorMessage from "./ErrorMessage/ErrorMessage";
-import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
-import Loader from "./Loader/Loader";
-import ImageModal from "./ImageModal/ImageModal";
+// import ImageGallery from "./ImageGallery/ImageGallery";
+// import ErrorMessage from "./ErrorMessage/ErrorMessage";
+// import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
+// import Loader from "./Loader/Loader";
+// import ImageModal from "./ImageModal/ImageModal";
 
 import css from "./App.module.css";
 
-export default function App() {
-  type Photo = {
-    id: string;
-    urls: { small: string };
-    alt_description: string | null;
+type Photo = {
+  id: string;
+  urls: {
+    small: string;
+    regular: string;
   };
+  alt_description: string | null;
+};
 
+export default function App() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -70,7 +73,7 @@ export default function App() {
   return (
     <div className={css.div_for_all}>
       <SearchBar onSearch={handleSearch} />
-      <ImageGallery img={photos} onImageClick={openModal} />
+      {/* <ImageGallery img={photos} onImageClick={openModal} />
       {loading && <Loader />}
 
       {page >= allPages && <p>End OF IMG</p>}
@@ -82,7 +85,7 @@ export default function App() {
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         imageUrl={selectedImage}
-      />
+      /> */}
     </div>
   );
 }
